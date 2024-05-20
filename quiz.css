@@ -1,0 +1,248 @@
+body{
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+
+.quiz-section-container {
+    margin-top: 50px;
+    /* margin:0 auto; */
+    display: grid;
+    grid-template-rows: 100px 100px 100px;
+    grid-template-columns: 500px 500px;
+    row-gap: 25px;
+    column-gap: 25px;
+    grid-template-areas: 
+        "question question"
+        "buttonA buttonB"
+        "buttonC buttonD";
+}
+
+
+.quiz-question-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-area: question;
+    width: 60%;
+    height: 100px;
+    position: relative;
+    margin-left: 20%;
+    margin-right: 20%;
+    background: wheat;
+    background: radial-gradient(circle at top left, transparent 15px, wheat 0) top left,
+                radial-gradient(circle at top right, transparent 15px,wheat 0) top right,
+                radial-gradient(circle at bottom right, transparent 15px,wheat 0) bottom right,
+                radial-gradient(circle at bottom left, transparent 15px,wheat 0) bottom left;
+    background-size: 52% 52%;
+    background-repeat: no-repeat;
+    /* font-size: 1rem; */
+
+}
+
+
+.quiz-question-box::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    width: calc(100% + 10px);
+    height: calc(100% + 10px);
+    background: #000; /* Black border */
+    background: radial-gradient(circle at top left, transparent 15px, #000 0) top left,
+                radial-gradient(circle at top right, transparent 15px, #000 0) top right,
+                radial-gradient(circle at bottom right, transparent 15px, #000 0) bottom right,
+                radial-gradient(circle at bottom left, transparent 15px, #000 0) bottom left;
+    background-size: 51% 51%;
+    background-repeat: no-repeat;
+    z-index: -1; /* Ensure it is behind the main content */
+}
+
+.quiz-question-box::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: wheat;
+    background: radial-gradient(circle at top left, transparent 15px, wheat 0) top left,
+                radial-gradient(circle at top right, transparent 15px,wheat 0) top right,
+                radial-gradient(circle at bottom right, transparent 15px,wheat 0) bottom right,
+                radial-gradient(circle at bottom left, transparent 15px,wheat 0) bottom left;
+    background-size: 51% 51%;
+    background-repeat: no-repeat;
+}
+
+.question-text{
+    width: 80%;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+
+
+
+.buttonA{
+    grid-area: buttonA;
+}
+
+.buttonB{
+    grid-area: buttonB;
+}
+
+.buttonC{
+    grid-area: buttonC;
+}
+
+.buttonD{
+    grid-area: buttonD;
+}
+
+
+
+.quiz-button {
+    border: none;
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+    background: wheat;
+    background: radial-gradient(circle at top left, transparent 15px, wheat 0) top left,
+                radial-gradient(circle at top right, transparent 15px,wheat 0) top right,
+                radial-gradient(circle at bottom right, transparent 15px,wheat 0) bottom right,
+                radial-gradient(circle at bottom left, transparent 15px,wheat 0) bottom left;
+    background-size: 51% 51%;
+    background-repeat: no-repeat;
+}
+
+.quiz-button::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    width: calc(100% + 10px);
+    height: calc(100% + 10px);
+    background: #000; /* Black border */
+    background: radial-gradient(circle at top left, transparent 15px, #000 0) top left,
+                radial-gradient(circle at top right, transparent 15px, #000 0) top right,
+                radial-gradient(circle at bottom right, transparent 15px, #000 0) bottom right,
+                radial-gradient(circle at bottom left, transparent 15px, #000 0) bottom left;
+    background-size: 51% 51%;
+    background-repeat: no-repeat;
+    z-index: -1; /* Ensure it is behind the main content */
+}
+
+.quiz-button::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: wheat;
+    background: radial-gradient(circle at top left, transparent 15px, wheat 0) top left,
+                radial-gradient(circle at top right, transparent 15px,wheat 0) top right,
+                radial-gradient(circle at bottom right, transparent 15px,wheat 0) bottom right,
+                radial-gradient(circle at bottom left, transparent 15px,wheat 0) bottom left;
+    background-size: 50% 50%;
+    background-repeat: no-repeat;
+}
+
+.button-text{
+    font-size: 20px;
+    font-weight: bold;
+    color:black;
+}
+
+.hidden{
+    display: none;
+}
+
+.active{
+    display: grid;
+}
+
+/* モーダルと背景の指定 */
+/* モーダルが隠れている*/
+.modal{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    background: rgba(0,0,0,50%);
+    padding: 10px 10px;
+    overflow: auto;
+    opacity: 0.5;
+    visibility: hidden;
+    /* transition: .3s; */
+    box-sizing: border-box;
+}
+
+
+
+.modal.is-active{
+    display: flex;
+    justify-content: center;
+    position:fixed;
+    top:5%;
+    left:20%;
+    width: 60%;
+    height: 200px;
+    text-align: center;
+    border-radius: 10px;
+    border-color: black;
+    border-width: 3px;
+    /* background: rgba(255, 255, 255); */
+    opacity: 1;
+    visibility: visible;
+}
+
+
+.modal-result{
+    /* position: absolute; */
+    
+    top:10%;
+    
+    width: 100px;
+    height: 100px;
+    /* font-size: large;
+    font-family: "Hiragino Sans","ヒラギノ角ゴシック"; font-weight: 900;
+    background-color: aqua; */
+    /* color:white; */
+}
+
+
+/* 「次の問題」のボタン */
+.modal-next{
+    cursor: pointer;
+    position: absolute;
+    top:130px;
+    left:35%;
+    width: 30%;
+    height: 50px;
+    /* font-size: large; */
+    /* border-color: black; */
+    border: none;
+    border-radius: 10px;
+    background-color: blue;
+    font-size: 20px;
+    font-family: "Hiragino Sans","ヒラギノ角ゴシック"; font-weight: 900;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+    color: whitesmoke;
+}
+
+.start-button{
+    cursor: pointer;
+    background-color: blue;
+    border-radius: 10px;
+    border-color: None;
+    width: 40%;
+    height: 75px;
+    font-family: "Hiragino Sans","ヒラギノ角ゴシック"; font-weight: 900;
+    font-size: 30px;
+    color: whitesmoke;
+}
+
+
