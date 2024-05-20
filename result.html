@@ -5,9 +5,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title></title>
-  <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous"> -->
   <link rel="stylesheet" href="common.css" />
-  <link rel="stylesheet" href="index.css" />
+  <link rel="stylesheet" href="result.css" />
   <meta name="description" content="">
 
   <meta property="og:title" content="">
@@ -24,13 +23,22 @@
 </head>
 
 <body>
-  <div class="title-container">
-    <div class="title">トリコ検定</div>
+  <div class="result-container">
+    <div class="text-container">
+      <div class="score-section js-score-section"></div>
+      <!-- <div class="diviation-section">あなたの捕獲レベルは〇〇です</div> -->
+    </div>
+    <div class="link-container">
+      <a class="X-link js-xlink" href="https://twitter.com/intent/tweet?hashtags=トリコ,トリコ検定" target="_blank">
+        𝕏でシェア
+      </a>
+      <button class="button-to-index js-button-to-index">スタート画面に戻る</button>
+    </div>  
   </div>
   
-  <button class="start-button js-start-button">クイズをスタート</button>
+  
+  <script src="result.js"></script>
 
-  <script src="index.js"></script>
 </body>
 
 </html>

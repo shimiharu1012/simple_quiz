@@ -1,0 +1,108 @@
+body{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.result-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+    height: 160px;
+    position: relative;
+    margin-top: 50px;
+    background: wheat;
+    background: radial-gradient(circle at top left, transparent 15px, wheat 0) top left,
+                radial-gradient(circle at top right, transparent 15px,wheat 0) top right,
+                radial-gradient(circle at bottom right, transparent 15px,wheat 0) bottom right,
+                radial-gradient(circle at bottom left, transparent 15px,wheat 0) bottom left;
+    background-size: 52% 52%;
+    background-repeat: no-repeat;
+}
+
+
+.result-container::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    width: calc(100% + 10px);
+    height: calc(100% + 10px);
+    background: #000; /* Black border */
+    background: radial-gradient(circle at top left, transparent 15px, #000 0) top left,
+                radial-gradient(circle at top right, transparent 15px, #000 0) top right,
+                radial-gradient(circle at bottom right, transparent 15px, #000 0) bottom right,
+                radial-gradient(circle at bottom left, transparent 15px, #000 0) bottom left;
+    background-size: 51% 51%;
+    background-repeat: no-repeat;
+    z-index: -1; /* Ensure it is behind the main content */
+}
+
+.result-container::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: wheat;
+    background: radial-gradient(circle at top left, transparent 15px, wheat 0) top left,
+                radial-gradient(circle at top right, transparent 15px,wheat 0) top right,
+                radial-gradient(circle at bottom right, transparent 15px,wheat 0) bottom right,
+                radial-gradient(circle at bottom left, transparent 15px,wheat 0) bottom left;
+    background-size: 51% 51%;
+    background-repeat: no-repeat;
+}
+
+.text-container{
+    /* display: flex;
+    flex-direction: column;
+    justify-content: center; */
+    font-family: "Hiragino Sans","ヒラギノ角ゴシック"; font-weight: 900;
+    font-size: 30px;
+    text-align: center;
+}
+
+/* .score-section{
+    
+}
+
+.diviation-section{
+
+} */
+
+.link-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 30%;
+    gap: 10px;
+    /* margin-bottom: 10%; */
+}
+
+.X-link{
+    /* content: '𝕏'; */
+    text-decoration: none;
+    text-align: center;
+    /* vertical-align: middle; */
+    width: 100px;
+    height: 30px;
+    background-color: black;
+    border-radius: 5px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button-to-index{
+    cursor: pointer;
+    width: 150px;
+    height: 30px;
+    background-color: blue;
+    border: none;
+    border-radius: 5px;
+    color: white;
+}
