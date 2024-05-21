@@ -45,37 +45,62 @@ const quiz=[
     {
         question:'トリコのフルコースに含まれない食材は次のうちどれ？',
         answers:['BBコーン','オゾン草','虹の実','ビリオンバードの卵'],
-        correct:'ビリオンバードの卵'
+        correct:'オゾン草'
     },
     {
         question:'次の美食會のメンバーのうち，副料理長でないものは誰か',
         answers:['アルファロ','スタージュン','グリンパーチ','トミーロッド'],
         correct:'アルファロ'
     },
-    // {
-    //     question:'',
-    //     answers:,
-    //     correct:
-    // },
+    {
+        question:'作中において，生物の状態変化や動作を始め，あらゆるものを止める特殊技能は？',
+        answers:['ピッキング','スタッキング','シバリング','ノッキング'],
+        correct:'ノッキング'
+    },
+    {
+        question:'作中世界の暦では，ある出来事を境に「ビフォアグルメエイジ/グルメエイジ」という時代区分が定義されている．その出来事は？',
+        answers:['グルメ戦争の終結','グルメ細胞の発見','巨大隕石の衝突','美食神アカシアの誕生'],
+        correct:'グルメ戦争の終結'
+    },
+    {
+        question:'エリア8の八王，馬王の種族である幻獣ヘラクの主食は？',
+        answers:['火','水','土','空気'],
+        correct:'空気'
+    },
+    {
+        question:'料理人ランキング15位，「繊細料理の千流」が料理長を務める割烹の名前は？',
+        answers:['霧隠れ割烹','雲隠れ割烹','木隠れ割烹','影隠れ割烹'],
+        correct:'雲隠れ割烹'
+    },
+    {
+        question:'IGOの精鋭部隊「第０ビオトーオプ」の職員の中に存在しないのは？',
+        answers:['整体師','小説家','音楽家','マジシャン'],
+        correct:'音楽家'
+    },
+    {
+        question:'次の四人のうち，「美食人間国宝」の称号を持つのは誰',
+        answers:['メリスマン','ザウス','千代','初代メルク'],
+        correct:'メリスマン'
+    },
+    {
+        question:'美食會が使用する遠隔操作型のロボット，「GTロボ」の”T”はなんの略か',
+        answers:['tele-existance','transformation','target-tracking','trigger-pulled'],
+        correct:''
+    },
 ];
 sessionStorage.setItem('quizLength',String(quiz.length))    //resultにおいて，問題数を使用する
 //　要素を取得
 
 const $question=document.querySelector('.js-quiz-question');
-console.log($question)
-// const $button=document.getElementsByTagName('button');
 const $buttons=document.querySelectorAll('.js-quiz-button');
 const buttonLength=$buttons.length;
 const $buttonsText=document.querySelectorAll('.js-button-text');
-console.log($buttonsText)
 
 
 
 
 const $modal = document.querySelector('.js-modal');
 const $result=document.querySelector('.js-modal-result');
-console.log($result)
-
 const $next = document.querySelector('.js-modal-next');
 
 
@@ -118,11 +143,10 @@ const modalClose=()=> {
 
 // ボタンがクリックされた時の処理
 const clickHandler=(e)=>{
-    console.log(e.target)
-    console.log(e.currentTarget)
+    
     // 正解なら，スコアを加算し，正解の場合のモーダルを表示
     //　不正解なら，不正解の場合のモーダルを表示
-    console.log(e.currentTarget.textContent.slice(2))
+    
     if(e.currentTarget.querySelector('.js-button-text').textContent.slice(2)===quiz[quizIndex]['correct']){
         score++;
         $result.setAttribute("src","assets/correct.svg");
@@ -153,7 +177,7 @@ const nextTo=()=>{
     $buttons.forEach((button)=>{
         button.disabled=false
     })
-    console.log('活性化')
+    
 
     if (quizIndex<quiz.length){
         setupQuiz();
