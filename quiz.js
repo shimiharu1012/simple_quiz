@@ -88,17 +88,13 @@ const quiz=[
         correct:''
     },
 ];
-sessionStorage.setItem('quizLength',String(quiz.length))    //resultにおいて，問題数を使用する
+
 //　要素を取得
 
 const $question=document.querySelector('.js-quiz-question');
 const $buttons=document.querySelectorAll('.js-quiz-button');
 const buttonLength=$buttons.length;
 const $buttonsText=document.querySelectorAll('.js-button-text');
-
-
-
-
 const $modal = document.querySelector('.js-modal');
 const $result=document.querySelector('.js-modal-result');
 const $next = document.querySelector('.js-modal-next');
@@ -117,12 +113,13 @@ $buttons.forEach((button) => {
 $next.addEventListener('click',(e)=>{nextTo(e);})
 
 // 問題文，および選択肢をセットアップする
-const buttonMarker=['A','B','C','D']
+buttonMarker=['A','B','C','D']
 const setupQuiz=()=>{
-    $question.textContent=`第${quizIndex+1}問`+" "+quiz[quizIndex].question;
+    $question.textContent=`第${quizIndex+1}問`+" "+quiz[randomIndeces[quizIndex]].question;
     // 各ボタン内のテキスト部分に問題を割り当てる
+    optionRandmIndices=generateUniqueRandomIndeces(4,4)
     for(let i=0; i<buttonLength; i++){
-        $buttonsText[i].textContent=buttonMarker[i]+' '+quiz[quizIndex].answers[i];
+        $buttonsText[i].textContent=buttonMarker[i]+' '+quiz[randomIndeces[quizIndex]].answers[optionRandmIndices[i]];
     }
     
 }
@@ -147,7 +144,7 @@ const clickHandler=(e)=>{
     // 正解なら，スコアを加算し，正解の場合のモーダルを表示
     //　不正解なら，不正解の場合のモーダルを表示
     
-    if(e.currentTarget.querySelector('.js-button-text').textContent.slice(2)===quiz[quizIndex]['correct']){
+    if(e.currentTarget.querySelector('.js-button-text').textContent.slice(2)===quiz[randomIndeces[quizIndex]]['correct']){
         score++;
         $result.setAttribute("src","assets/correct.svg");
         
@@ -161,7 +158,6 @@ const clickHandler=(e)=>{
     $buttons.forEach((button)=>{
         button.disabled=true
     })
-    console.log('非活性化')
 }
 
 
@@ -188,9 +184,21 @@ const nextTo=()=>{
     };
 }
 
+// 長さupperBoundの配列から，arrayLength個を持ってきてランダムに並べるためのインデックスを生成
+const generateUniqueRandomIndeces=(upperBound, arrayLength)=> {
+    const indeces = Array.from({ length: upperBound},(_,i)=>i);
+    for (let i = indeces.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [indeces[i], indeces[j]] = [indeces[j], indeces[i]];
+    }
+    return indeces.slice(0, arrayLength);
+}
 
 
+const proposingQuizLength=quiz.length    // クイズの出題数
+const randomIndeces = generateUniqueRandomIndeces(quiz.length,proposingQuizLength);
 setupQuiz()
+sessionStorage.setItem('quizLength',String(proposingQuizLength))    //resultにおいて，出題数を使用する
 
 
 
